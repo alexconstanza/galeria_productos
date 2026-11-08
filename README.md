@@ -1,6 +1,6 @@
 # Tienda Comercial Constanza &mdash; Catálogo Exclusivo con Carrito
 
-Plataforma de catálogo interactivo desarrollada exclusivamente con **HTML5, CSS3 y JavaScript vanilla**. Diseñada con una arquitectura visual moderna de 3 columnas: **Categorías a la izquierda**, **Catálogo de artículos centrado** y **Carrito de compras a la derecha**.
+Plataforma de catálogo interactivo desarrollada exclusivamente con **HTML5, CSS3 y JavaScript**. Diseñada con una arquitectura visual moderna de 3 columnas: **Categorías a la izquierda**, **Catálogo de artículos centrado** y **Carrito de compras a la derecha**.
 
 ---
 
