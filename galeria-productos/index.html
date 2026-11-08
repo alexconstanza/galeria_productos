@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda Comercial Constanza | Catálogo Exclusivo</title>
+  <!-- Tipografía ultra moderna: Space Grotesk (títulos y acentos) + Outfit (cuerpo y controles) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Barra Superior con Nombre de Marca -->
+    <nav class="top-nav" aria-label="Navegación principal">
+      <div class="nav-brand">
+        <span class="brand-title">TIENDA COMERCIAL CONSTANZA</span>
+      </div>
+      <div class="nav-status-indicator">
+        <span class="status-dot"></span> Catálogo Exclusivo 2026
+      </div>
+    </nav>
+
+    <!-- Encabezado Minimalista -->
+    <header class="app-header">
+      <span class="header-tag">Colección Oficial</span>
+      <h1>Galería de Productos</h1>
+      <p class="subtitle">Explora nuestro catálogo centrado con filtros a la izquierda y tu carrito a la derecha.</p>
+    </header>
+
+    <!-- Estructura Principal: Izquierda (Categorías), Centro (Productos), Derecha (Carrito) -->
+    <div class="store-grid-layout">
+      <!-- ===================================================================
+           COLUMNA IZQUIERDA: Categorías y Filtros
+           =================================================================== -->
+      <aside class="sidebar-left" aria-label="Filtros y Categorías">
+        <div class="sidebar-card">
+          <div class="sidebar-header">
+            <h3 class="sidebar-title">Categorías</h3>
+            <span class="sidebar-tag">Filtro</span>
+          </div>
+
+          <!-- Botones de Categoría (Disposición Vertical) -->
+          <div id="contenedor-categorias" class="category-list" role="group" aria-label="Filtro de categorías">
+            <button type="button" class="btn-category active" data-categoria="todos">
+              <span>Todos los Artículos</span>
+            </button>
+            <button type="button" class="btn-category" data-categoria="Tecnología">
+              <span>Tecnología</span>
+            </button>
+            <button type="button" class="btn-category" data-categoria="Ropa">
+              <span>Ropa</span>
+            </button>
+            <button type="button" class="btn-category" data-categoria="Hogar">
+              <span>Hogar</span>
+            </button>
+            <button type="button" class="btn-category" data-categoria="Deportes">
+              <span>Deportes</span>
+            </button>
+          </div>
+
+          <div class="sidebar-divider"></div>
+
+          <!-- Filtro por Precio Máximo -->
+          <div class="price-filter-section">
+            <label for="input-precio" class="sidebar-label">Precio Máximo ($)</label>
+            <form id="form-precio" class="sidebar-price-form" onsubmit="return false;">
+              <div class="input-wrapper">
+                <span class="currency-symbol">$</span>
+                <input 
+                  type="number" 
+                  id="input-precio" 
+                  name="precioMaximo" 
+                  placeholder="0.00" 
+                  min="0" 
+                  step="1"
+                >
+              </div>
+              <button type="submit" id="btn-filtrar-precio" class="btn-primary btn-block">
+                Aplicar Filtro
+              </button>
+              <button type="button" id="btn-limpiar" class="btn-ghost btn-block" title="Restablecer filtros">
+                Restablecer Filtros
+              </button>
+            </form>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ===================================================================
+           COLUMNA CENTRAL: Artículos y Catálogo Centrado
+           =================================================================== -->
+      <main class="center-content">
+        <!-- Barra de Estado y Contador de Artículos -->
+        <div class="status-bar">
+          <span id="contador-productos" class="counter-text">Cargando catálogo...</span>
+          <div id="badge-filtro-activo" class="active-filter-badge" style="display: none;"></div>
+        </div>
+
+        <!-- Contenedor de la Galería de Productos -->
+        <section id="galeria-productos" class="products-grid" aria-live="polite">
+          <!-- Renderizado dinámicamente mediante JavaScript con map() -->
+        </section>
+      </main>
+
+      <!-- ===================================================================
+           COLUMNA DERECHA: Carrito de Compras
+           =================================================================== -->
+      <aside class="sidebar-right" aria-label="Carrito de Compras">
+        <div class="cart-sidebar-card">
+          <div class="cart-card-header">
+            <div class="cart-card-title-wrap">
+              <svg class="cart-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+              <h3 class="sidebar-title">Tu Carrito</h3>
+            </div>
+            <span id="badge-carrito" class="cart-badge">0</span>
+          </div>
+
+          <p class="cart-sidebar-desc">Revisa tus productos seleccionados y finaliza tu pedido de forma segura.</p>
+
+          <div class="cart-sidebar-summary">
+            <div class="cart-summary-stat">
+              <span class="stat-label">Artículos</span>
+              <span id="cart-sidebar-items" class="stat-value">0</span>
+            </div>
+            <div class="cart-summary-stat">
+              <span class="stat-label">Total</span>
+              <span id="cart-sidebar-total" class="stat-value total-highlight">$0</span>
+            </div>
+          </div>
+
+          <button type="button" id="btn-abrir-carrito" class="btn-primary btn-block btn-open-cart">
+            Ver Carrito Detallado
+          </button>
+          <button type="button" id="btn-checkout-sidebar" class="btn-ghost btn-block">
+            Finalizar Compra
+          </button>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="app-footer">
+      <p>&copy; 2026 Tienda Comercial Constanza &mdash; Todos los derechos reservados.</p>
+    </footer>
+  </div>
+
+  <!-- Drawer Lateral del Carrito de Compras Completo -->
+  <div id="drawer-carrito" class="cart-drawer" aria-hidden="true">
+    <div class="cart-backdrop" id="cart-backdrop"></div>
+    <aside class="cart-panel" role="dialog" aria-modal="true" aria-label="Carrito de compras detallado">
+      <div class="cart-header">
+        <div class="cart-title-wrap">
+          <h2>Tu Selección</h2>
+          <span id="cart-item-count" class="cart-item-count">0 artículos</span>
+        </div>
+        <button type="button" id="btn-cerrar-carrito" class="btn-close-cart" aria-label="Cerrar carrito">
+          &times;
+        </button>
+      </div>
+
+      <!-- Lista de Artículos en el Carrito (Renderizada dinámicamente con map()) -->
+      <div id="cart-items-container" class="cart-items-list">
+        <!-- Contenido generado por JavaScript -->
+      </div>
+
+      <!-- Pie del Carrito con Totales y Checkout -->
+      <div id="cart-footer" class="cart-footer">
+        <div class="cart-summary">
+          <div class="summary-line">
+            <span>Subtotal</span>
+            <span id="cart-subtotal">$0</span>
+          </div>
+          <div class="summary-line">
+            <span>Envío</span>
+            <span class="shipping-tag">Gratis</span>
+          </div>
+          <div class="summary-line total-line">
+            <span>Total Estimado</span>
+            <span id="cart-total" class="cart-total-price">$0</span>
+          </div>
+        </div>
+        <div class="cart-actions">
+          <button type="button" id="btn-checkout" class="btn-primary btn-checkout">
+            Finalizar Pedido
+          </button>
+          <button type="button" id="btn-vaciar-carrito" class="btn-ghost btn-clear">
+            Vaciar Carrito
+          </button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Notificación Flotante Toast -->
+  <div id="toast-notificacion" class="toast-notification" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
