@@ -66,4 +66,4 @@ Abre [index.html] haciendo doble clic en el archivo desde el explorador en la ub
 
 - **Nombre:**: Edgar Alexander Constanza Jovel.
 - **Grupo:**: Desarrollador Web Front End "WDFRT2".
-- **Diseño Adaptativo**: Galeria de Productos Interactiva.
+- **Actividad: **: Galeria de Productos Interactiva.
